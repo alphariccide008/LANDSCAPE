@@ -1,0 +1,386 @@
+@config "../tailwind.config.cjs";
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================
+   LMC BRAND COLORS — #D4541E (burnt orange)
+   ============================================ */
+:root {
+  /* Warm cream background */
+  --background: oklch(0.98 0.008 55);
+  --foreground: oklch(0.13 0.02 45);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.13 0.02 45);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.13 0.02 45);
+  /* LMC burnt orange as primary */
+  --primary: oklch(0.57 0.175 38);
+  --primary-foreground: oklch(0.98 0.005 55);
+  --secondary: oklch(0.96 0.008 55);
+  --secondary-foreground: oklch(0.13 0.02 45);
+  --muted: oklch(0.95 0.006 55);
+  --muted-foreground: oklch(0.52 0.012 55);
+  /* Deep charcoal accent */
+  --accent: oklch(0.22 0.02 45);
+  --accent-foreground: oklch(0.98 0.005 55);
+  --destructive: oklch(0.62 0.24 27);
+  --destructive-foreground: oklch(0.98 0.01 60);
+  --border: oklch(0.9 0.008 55);
+  --input: oklch(0.9 0.008 55);
+  --ring: oklch(0.57 0.175 38);
+  --radius: 0.75rem;
+  /* Brand orange scale */
+  --orange-light: oklch(0.78 0.12 48);
+  --orange-mid: oklch(0.67 0.155 42);
+  --orange-dark: oklch(0.47 0.165 35);
+  --orange-deep: oklch(0.35 0.14 32);
+}
+
+.dark {
+  --background: oklch(0.10 0.015 40);
+  --foreground: oklch(0.96 0.005 55);
+  --card: oklch(0.13 0.015 40);
+  --card-foreground: oklch(0.96 0.005 55);
+  --popover: oklch(0.13 0.015 40);
+  --popover-foreground: oklch(0.96 0.005 55);
+  --primary: oklch(0.67 0.175 42);
+  --primary-foreground: oklch(0.10 0.015 40);
+  --secondary: oklch(0.17 0.015 40);
+  --secondary-foreground: oklch(0.96 0.005 55);
+  --muted: oklch(0.16 0.012 40);
+  --muted-foreground: oklch(0.60 0.01 40);
+  --accent: oklch(0.82 0.10 50);
+  --accent-foreground: oklch(0.10 0.015 40);
+  --destructive: oklch(0.62 0.24 27);
+  --destructive-foreground: oklch(0.98 0.01 60);
+  --border: oklch(0.22 0.015 40);
+  --input: oklch(0.22 0.015 40);
+  --ring: oklch(0.67 0.175 42);
+  --orange-light: oklch(0.82 0.13 50);
+  --orange-mid: oklch(0.72 0.16 44);
+  --orange-dark: oklch(0.55 0.17 38);
+  --orange-deep: oklch(0.42 0.15 34);
+}
+
+@theme inline {
+  --font-sans: "Poppins", "Poppins Fallback", sans-serif;
+  --font-mono: "Fira Code", monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  ::selection {
+    background-color: oklch(0.57 0.175 38 / 0.25);
+    color: oklch(0.13 0.02 45);
+  }
+}
+
+/* ============================
+   ANIMATIONS (purposeful only)
+   ============================ */
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes scroll-infinite {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes zoom-in-out {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes loader-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes draw-line {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* ============================
+   ANIMATION CLASSES
+   ============================ */
+
+.animate-slide-up { animation: slide-up 0.7s ease-out forwards; }
+.animate-slide-down { animation: slide-down 0.4s ease-out forwards; }
+.animate-slide-in-left { animation: slide-in-left 0.7s ease-out forwards; }
+.animate-slide-in-right { animation: slide-in-right 0.7s ease-out forwards; }
+.animate-fade-in { animation: fade-in 0.7s ease-out forwards; }
+.animate-fade-in-up { animation: fade-in-up 0.7s ease-out forwards; }
+.animate-scale-in { animation: scale-in 0.5s ease-out forwards; }
+.animate-scroll-infinite { animation: scroll-infinite 35s linear infinite; }
+.animate-zoom-in-out { animation: zoom-in-out 10s ease-in-out infinite; }
+.animate-spin { animation: spin 1s linear infinite; }
+.pause-animation:hover { animation-play-state: paused; }
+
+/* ============================
+   HOVER EFFECTS
+   ============================ */
+
+.hover-lift {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+.hover-scale {
+  transition: transform 0.35s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 16px 48px oklch(0.57 0.175 38 / 0.3);
+}
+
+.hover-orange-border {
+  transition: all 0.35s ease;
+  border: 2px solid transparent;
+}
+.hover-orange-border:hover {
+  border-color: oklch(0.57 0.175 38);
+  box-shadow: 0 0 18px oklch(0.57 0.175 38 / 0.2);
+}
+
+/* ============================
+   GLASS & SPECIAL EFFECTS
+   ============================ */
+
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.glass-orange {
+  background: oklch(0.57 0.175 38 / 0.10);
+  backdrop-filter: blur(16px);
+  border: 1px solid oklch(0.57 0.175 38 / 0.30);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.30);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+/* Orange gradient helpers */
+.bg-orange-gradient {
+  background: linear-gradient(135deg, oklch(0.78 0.12 48), oklch(0.57 0.175 38), oklch(0.47 0.165 35));
+}
+
+.text-orange-gradient {
+  background: linear-gradient(135deg, oklch(0.78 0.12 48), oklch(0.57 0.175 38), oklch(0.47 0.165 35));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Keep bg-gold-gradient as alias for backward compat */
+.bg-gold-gradient {
+  background: linear-gradient(135deg, oklch(0.78 0.12 48), oklch(0.57 0.175 38), oklch(0.47 0.165 35));
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, oklch(0.78 0.12 48), oklch(0.57 0.175 38), oklch(0.47 0.165 35));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Also keep glass-gold alias */
+.glass-gold {
+  background: oklch(0.57 0.175 38 / 0.10);
+  backdrop-filter: blur(16px);
+  border: 1px solid oklch(0.57 0.175 38 / 0.30);
+}
+
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+.card-shine::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.06) 50%, transparent 70%);
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+.card-shine:hover::after {
+  opacity: 1;
+  transform: rotate(45deg) translate(50%, 50%);
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ============================
+   SCROLL & LAYOUT
+   ============================ */
+
+html { scroll-behavior: smooth; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: oklch(0.95 0.006 55); }
+::-webkit-scrollbar-thumb {
+  background: oklch(0.57 0.175 38);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: oklch(0.47 0.165 35); }
+.dark ::-webkit-scrollbar-track { background: oklch(0.14 0.012 40); }
+.dark ::-webkit-scrollbar-thumb { background: oklch(0.67 0.175 42); }
+
+.section-padding { padding: clamp(4rem, 8vw, 7rem) 0; }
+.container-wide { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+
+/* Stagger animation delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* Section reveal utility */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* No scrollbar */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Orange underline effect */
+.gold-underline {
+  position: relative;
+}
+.gold-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, oklch(0.57 0.175 38), oklch(0.78 0.12 48));
+  transition: width 0.35s ease;
+}
+.gold-underline:hover::after {
+  width: 100%;
+}
+
+/* Dot pattern */
+.pattern-dots {
+  background-image: radial-gradient(circle, oklch(0.57 0.175 38 / 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Counter value */
+.counter-value {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Loader ring */
+.loader-ring {
+  border: 3px solid oklch(0.57 0.175 38 / 0.2);
+  border-top-color: oklch(0.57 0.175 38);
+  border-radius: 50%;
+  animation: loader-spin 0.9s linear infinite;
+}
